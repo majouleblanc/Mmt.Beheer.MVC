@@ -1,16 +1,16 @@
 # Mmt.Beheer.MVC
  Stage/Work Project -Admin MVC Project- For a Tourism company to allow hotels, schools and organisation to organize city tours.
   
-<a href="https://mmt-beheer-mvc.azurewebsites.net/" target="_blank">Click here to visit the Live Version of the Api</a> 
-<b>plz use this Credentiels to log in </b>
+<a href="https://mmt-beheer-mvc.azurewebsites.net/" target="_blank">Click here to visit the Live Version of the Api</a> </br>
+<b>plz use this Credentiels to log in </b></br>
 
-for director privileges use this account :
-  username : director@mmt.be
-  password : Test123.
+for director privileges use this account :</br>
+  username : director@mmt.be</br>
+  password : Test123.</br>
 
-for supervisor previleges use this account : 
-  username : supervisor@mmt.be
-  password : Test123.
+for supervisor previleges use this account : </br>
+  username : supervisor@mmt.be</br>
+  password : Test123.</br>
   
 <h1>Technologies : </h1>
 <ul>
