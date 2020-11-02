@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Mmt.Beheer.MVC.Models.Log>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-info">Log Index</h1>
+
+<p class="float-right">
+    <a asp-action="Create">Create New Log</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.UserName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Role)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CuriosityName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CuriosityId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CuriosityLongitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CuriosityLatitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.InsertedOn)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.UserName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CuriosityName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CuriosityId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CuriosityLongitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CuriosityLatitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.InsertedOn)
+                </td>
+                <td>
+                    <a asp-controller="Logs" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary m-1" style="width:75px">Edit</a>
+                    <form asp-action="Details" asp-route-id="@item.Id" class="m-1">
+                        <button type="submit" class="btn btn-info" style="width:75px">Details</button>
+                    </form>
+                    <form asp-action="Delete" asp-route-id="@item.Id" class="m-1">
+                        <button type="submit" class="btn btn-danger" style="width:75px">Delete</button>
+                    </form>
+
+                    @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                    @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

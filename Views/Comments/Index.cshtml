@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Mmt.Beheer.MVC.Models.Comment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-info">Comments Index</h1>
+
+<p class="float-right">
+    <a asp-action="Create" asp-route-curiosityId="@ViewData["curiosityId"]">Create New Comment</a>
+</p>
+@if (!Model.Any())
+{
+    <label class="text-info">no comments posted yet for curiosity with id : @ViewData["curiosityId"]</label>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CuriosityId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.UserName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CommentMsg)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CuriosityId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CommentMsg)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        <a asp-controller="Comments" asp-action="Edit" asp-route-curiosityId="@item.CuriosityId" asp-route-id="@item.Id" class="btn btn-primary m-1" style="width:75px">Edit</a>
+                        <form asp-controller="Comments" asp-action="Details" asp-route-curiosityId="@item.CuriosityId" asp-route-id="@item.Id" class="m-1">
+                            @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
+                            <button type="submit" class="btn btn-info" style="width:75px">Details</button>
+                        </form>
+                        <form asp-controller="Comments" asp-action="Delete" asp-route-curiosityId="@item.CuriosityId" asp-route-id="@item.Id" class="m-1">
+                            @*@Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                            <button type="submit" class="btn btn-danger" style="width:75px">Delete</button>
+                        </form>
+
+                        @*@Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

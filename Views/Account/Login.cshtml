@@ -1,0 +1,38 @@
+﻿@model UserLogin;
+
+@{
+    ViewData["Title"] = "Login Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Mmt Beheer</h1>
+</div>
+
+<div class="text-center">
+    <form class="form-signin w-50 mx-auto" asp-controller="Account" asp-action="Login">
+        <img src="~/images/MmtLogo.jpg" />
+        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+        <div class="m-2">
+            <label asp-for="Email" class="sr-only">Email address</label>
+            <input asp-for="Email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        </div>
+        <div class="m-2">
+
+            <label asp-for="Password" class="sr-only">Password</label>
+            <input asp-for="Password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        </div>
+        <div class="checkbox mb-3">
+            <label>
+                <input asp-for="RememberMe" > Remember me
+            </label>
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <p class="mt-5 mb-3 text-muted">© 2020-2021</p>
+    </form>
+</div>
+@if (!String.IsNullOrEmpty(ViewData["ErrorMessage"]?.ToString()))
+{
+    <div class="col-8 alert alert-danger mx-auto text-center">
+        <label>@ViewData["ErrorMessage"]</label>
+    </div>
+}

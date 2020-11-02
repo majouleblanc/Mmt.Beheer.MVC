@@ -1,0 +1,153 @@
+﻿@model Mmt.Beheer.MVC.ViewModels.Curiosities.CuriositiesPutViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-info text-center">Edit Curiosity</h1>
+
+<h4 class="text-primary">@Model.Name</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-route-id="@ViewData["Id"]" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Image" class="control-label"></label>
+                <img src="@Model.Image" alt="@Model.Image" style="max-height:30rem; min-height:25rem" />
+                <input type="hidden" asp-for="Image" value="@Model.Image" />
+                <span asp-validation-for="Image" class="text-danger"></span>
+                <label asp-for="NewImage" class="control-label">change image</label>
+                <input asp-for="NewImage" type="file" class="form-control" />
+                <span asp-validation-for="NewImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Coordinates" class="control-label"></label>
+                <input asp-for="Coordinates" class="form-control" />
+                <span asp-validation-for="Coordinates" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Longitude" class="control-label"></label>
+                <input asp-for="Longitude" class="form-control" />
+                <span asp-validation-for="Longitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Latitude" class="control-label"></label>
+                <input asp-for="Latitude" class="form-control" />
+                <span asp-validation-for="Latitude" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Type" class="control-label"></label>
+                <input asp-for="Type" class="form-control" />
+                <span asp-validation-for="Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Period" class="control-label"></label>
+                <input asp-for="Period" class="form-control" />
+                <span asp-validation-for="Period" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Region" class="control-label"></label>
+                <input asp-for="Region" class="form-control" />
+                <span asp-validation-for="Region" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Province" class="control-label"></label>
+                <input asp-for="Province" class="form-control" />
+                <span asp-validation-for="Province" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedToursIds" class="control-label">Tours</label>
+                @*@{
+                    var selectListItems = new SelectList(Model.Curiosities.Select(c=>c.Name));
+                }*@
+                <div>
+
+                    <select asp-for="SelectedToursIds" asp-items="@Model.ToursSelectList" multiple></select>
+                    <span asp-validation-for="ToursSelectList" class="text-danger"></span>
+
+                    @*<select id="Tour-CuriosityId" name="Tour-CuriosityId" multiple>
+                        @foreach (var item in Model.Curiosities)                 /*--------------*/
+                        {
+                            <option value="@item.Id">@item.Name</option>
+                        }
+                    </select>*@
+                </div>
+            </div>
+            @*<div>
+                <a asp-controller="Photo" asp-action="index" asp-route-curiosityId="@ViewData["Id"]" class="btn btn-primary btn-lg my-2" role="button" aria-pressed="true">Edit Photos</a>
+            </div>
+
+            <div>
+                <a asp-controller="Comments" asp-action="index" asp-route-curiosityId="@ViewData["Id"]" class="btn btn-primary btn-lg my-2" role="button" aria-pressed="true">Edit Comments</a>
+            </div>*@
+
+
+
+
+
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-success" style="width:10rem" />
+            </div>
+        </form>
+
+        <div>
+            <a asp-action="Index" class="btn btn-secondary" style="width:10rem">Back to List</a>
+        </div>
+
+    </div>
+    <div class="card-deck">
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header">
+                <h3>Edit Photos</h3>
+            </div>
+
+            <img class="card-img-top imageThumbnail" src="~/Images/index/Photos.jpg"
+                 asp-append-version="true" />
+
+            <div class="card-footer text-center">
+                <a asp-controller="Photo" asp-action="index" asp-route-curiosityId="@ViewData["Id"]"
+                   class="btn btn-primary btn-lg my-2" role="button" aria-pressed="true">Edit Photos</a>
+            </div>
+        </div>
+
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header">
+                <h3>Edit Comments</h3>
+            </div>
+
+            <img class="card-img-top imageThumbnail" src="~/Images/index/Comments.jpg"
+                 asp-append-version="true" />
+
+            <div class="card-footer text-center">
+                <a asp-controller="Comments" asp-action="index" asp-route-curiosityId="@ViewData["Id"]"
+                   class="btn btn-primary btn-lg my-2" role="button" aria-pressed="true">Edit Comments</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

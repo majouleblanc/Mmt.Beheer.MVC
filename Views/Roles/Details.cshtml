@@ -1,0 +1,104 @@
+﻿@model Mmt.Beheer.MVC.Models.Role
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-info text-center">Details</h1>
+
+<div>
+    <h4 class="text-primary">Role</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary m-1" style="width:75px">Edit</a>
+
+    @*<form asp-action="Edit" asp-route-id="@Model.Id">
+
+        <button class="btn btn-primary" style="width:75px">Edit</button>
+        <a asp-action="Index" class="btn btn-info float-right">Back to List</a>
+    </form>*@
+
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        <a asp-action="Index">Back to List</a>*@
+</div>
+<div class="mt-3">
+    <label>
+        <b class="text-info">
+            Users in this Role :
+        </b>
+    </label>
+</div>
+<div class="row mt-2">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    <label><b>User Id :</b> </label>
+                </th>
+                <th>
+                    <label><b>User Name:</b> </label>
+                </th>
+                <th>
+                    <label><b>Roles : </b></label>
+                </th>
+                <th>
+                    <label><b>Email :</b></label>
+                </th>
+                <th>
+                    <label><b>Function : </b></label>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @{
+                List<MmtUser> users = ViewData["Users"] as List<MmtUser>;
+            }
+            @foreach (var user in users)
+            {
+                <tr>
+                    <td>
+                        <label>@user.Id</label>
+                    </td>
+                    <td>
+                        <label>@user.UserName</label>
+                    </td>
+                    <td>
+                        @foreach (var role in user.Roles)
+                        {
+                            <div>
+                                <label>@role.Name</label>
+                            </div>
+                        }
+                        @*@Html.DisplayFor(modelItem => item.Roles)*@
+                    </td>
+                    <td>
+                        <label>@user.Email</label>
+                    </td>
+                    <td>
+                        <label>@user.Function</label>
+                    </td>
+                    <td>
+                        <a asp-controller="MmtUsers" asp-action="Edit" asp-route-id="@user.Id" class="btn btn-primary m-1" style="width:auto">Edit Roles</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

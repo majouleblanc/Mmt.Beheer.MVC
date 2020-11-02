@@ -1,0 +1,48 @@
+﻿@model Mmt.Beheer.MVC.ViewModels.Comment.CommentPutViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1 class="text-info text-center">Edit Comment</h1>
+
+<h4 class="text-primary">Comment of @Model.UserName in @Model.CuriosityId</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit" asp-route-curiosityId="@Model.CuriosityId" asp-route-id="@ViewData["id"]">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CuriosityId" class="control-label"></label>
+                <input asp-for="CuriosityId" class="form-control" disabled />
+                <span asp-validation-for="CuriosityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="UserName" class="control-label"></label>
+                <input asp-for="UserName" class="form-control" />
+                <span asp-validation-for="UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CommentMsg" class="control-label"></label>
+                <input asp-for="CommentMsg" class="form-control" />
+                <span asp-validation-for="CommentMsg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-curiosityId="@Model.CuriosityId">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

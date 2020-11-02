@@ -1,0 +1,40 @@
+﻿@model IEnumerable<HomePageElement>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Mmt Beheer</h1>
+</div>
+@*<div>
+    <a asp-controller="Tours" asp-action="index">Tours</a>
+    <a asp-controller="Curiosities" asp-action="index">Curiosisties</a>
+    <a asp-controller="Comments" asp-action="index">Comments</a>
+    <a asp-controller="Logs" asp-action="index">Logs</a>
+    <a asp-controller="MmtUsers" asp-action="index">Users</a>
+    <a asp-controller="Roles" asp-action="index">Roles</a>
+</div>*@
+
+
+
+<div class="card-deck">
+    @foreach (var element in Model)
+    {
+        var photoPath = "~/Images/index/" + (element.imagePath ?? "noimage.jpg");
+
+        <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+            <div class="card-header">
+                <h3>@element.EntityName</h3>
+            </div>
+
+            <img class="card-img-top imageThumbnail" src="@photoPath"
+                 asp-append-version="true" />
+
+            <div class="card-footer text-center">
+                <a asp-controller="@element.EntityName" asp-action="index"
+                   class="btn btn-primary m-1">@element.EntityName</a>
+            </div>
+        </div>
+    }
+</div>

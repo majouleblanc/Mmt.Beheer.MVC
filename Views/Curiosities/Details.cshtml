@@ -1,0 +1,155 @@
+﻿@model Mmt.Beheer.MVC.Models.Curiosity
+
+@{
+    ViewData["Title"] = "Curiosity Details";
+}
+
+<h1 class="text-info text-center">Details</h1>
+
+<div>
+    <h4 class="text-primary">Curiosity</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @*@Html.DisplayNameFor(model => model.CuriosityLikeId)*@
+            @Html.DisplayNameFor(model => model.CuriosityLike.Likes)
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.CuriosityLikeId)*@
+            @Html.DisplayFor(model => model.CuriosityLike.Likes)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Image)
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.Image)*@
+            <img src="@Model.Image" alt="@Model.Image" style="max-height:30rem; min-height:25rem" />
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Coordinates)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Coordinates)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Period)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Period)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Country)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Country)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Region)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Region)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Province)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Province)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Tours)
+        </dt>
+        <dd>
+            @{
+                var selectListItems = new SelectList(Model.Tours.Select(t => t.Name));
+            }
+            <select asp-for="@Model.Tours" asp-items="@selectListItems" disabled></select>
+        </dd>
+
+    </dl>
+    <label><b>Photo Gallery  </b></label>
+    <div class="card-deck">
+        @foreach (var photo in Model.Photos)
+        {
+            var photoPath = (photo.photoUrl ?? "~/Images/index/noimage.jpg");
+
+            <div class="card m-3" style="min-width: 18rem; max-width:30.5%;">
+                <img class="card-img-top imageThumbnail" src="@photoPath"
+                     asp-append-version="true" />
+
+            </div>
+        }
+
+    </div>
+
+    <label><b>Comments  </b></label>
+    <div class="card-deck mt-2">
+        @foreach (var comment in Model.Comments)
+        {
+            <div class="card bg-light mb-3" style="min-width: 18rem; max-width: 18rem;">
+                <div class="card-header">@comment.UserName
+                <div>Email : @comment.Email</div>
+                </div>
+                <div class="card-body">
+                    @*<h7 class="card-title">ID : @comment.Email</h7>*@
+                    <p class="card-text">@comment.CommentMsg</p>
+                </div>
+            </div>
+        }
+    </div>
+
+    <div>
+        <form asp-action="Edit" asp-route-id="@Model.Id">
+
+            @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+            <a asp-controller="Curiosities" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary m-1" style="width:75px">Edit</a>
+
+            @*            <button class="btn btn-primary" style="width:75px">Edit</button>*@
+            <a asp-action="Index" class="btn btn-info float-right">Back to List</a>
+        </form>
+    </div>
+</div>
+
+
+</div>

@@ -1,0 +1,38 @@
+﻿@model Mmt.Beheer.MVC.ViewModels.Photo.PhotoPostViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1 class="text-info text-center">Create a new Photo</h1>
+
+<h4 class="text-primary">Create a new Photo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create" asp-route-curiosityId="@Model.CuriosityId" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CuriosityId" class="control-label"></label>
+                <input asp-for="CuriosityId" class="form-control" value="@Model.CuriosityId" disabled />
+                <span asp-validation-for="CuriosityId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Photo" class="control-label"></label>
+                <input asp-for="Photo" type="file" class="form-control" />
+                <span asp-validation-for="Photo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-curiosityId="@Model.CuriosityId">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

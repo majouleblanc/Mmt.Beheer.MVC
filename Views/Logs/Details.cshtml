@@ -1,0 +1,90 @@
+﻿@model Mmt.Beheer.MVC.Models.Log
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1 class="text-info text-center">Details</h1>
+
+<div>
+    <h4 class="text-primary">Log</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Role)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Role)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Longitude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Longitude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Latitude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Latitude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CuriosityName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CuriosityName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CuriosityId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CuriosityId)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CuriosityLongitude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CuriosityLongitude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.CuriosityLatitude)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.CuriosityLatitude)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.InsertedOn)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.InsertedOn)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Logs" asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary m-1" style="width:75px">Edit</a>
+
+    <!--<form asp-action="Edit" asp-route-id="@Model.Id">-->
+        @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+        <!--<button class="btn btn-primary" style="width:75px">Edit</button>
+    </form>-->
+        <a asp-action="Index" class="btn btn-info float-right">Back to List</a>
+    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
+</div>
