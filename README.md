@@ -4,13 +4,7 @@
 <a href="https://mmt-beheer-mvc.azurewebsites.net/" target="_blank">Click here to visit the Live Version of the Api</a> 
 </br><b>plz use this Credentiels to log in </b></br>
 
-for director privileges use this account :<hr>
-  username : director@mmt.be</br>
-  password : Test123.</br>
-
-for supervisor previleges use this account : <hr>
-  username : supervisor@mmt.be</br>
-  password : Test123.</br>
+plz contact me if you are interested seeing the content of the web app.
   
 <h1>Technologies : </h1>
 <ul>
